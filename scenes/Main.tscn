@@ -5,26 +5,46 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lfnqj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvnqe"]
-size = Vector2(800, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixvnm"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(800, 50)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_yjmvr")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 400)
+position_smoothing_enabled = true
+
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("CanvasItemMaterial_lfnqj")
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = -519.0
+offset_top = -778.0
+offset_right = 2240.0
+offset_bottom = 774.0
 color = Color(0.329412, 0.662745, 0.901961, 1)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(576, 400)
+script = ExtResource("2_ixnqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_player")
+
+[node name="ColorRect" type="ColorRect" parent="Player"]
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = 40.0
+color = Color(0.0784314, 0.470588, 0.27451, 1)
 
 [node name="Platform" type="StaticBody2D" parent="."]
 position = Vector2(576, 500)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-shape = SubResource("RectangleShape2D_yvnqe")
+shape = SubResource("RectangleShape2D_platform")
 
 [node name="ColorRect" type="ColorRect" parent="Platform"]
 offset_left = -400.0
@@ -33,16 +53,16 @@ offset_right = 400.0
 offset_bottom = 25.0
 color = Color(0.27451, 0.156863, 0.0784314, 1)
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(576, 400)
-script = ExtResource("2_ixnqm")
+[node name="Platform_2" type="StaticBody2D" parent="."]
+position = Vector2(1200, 425)
+scale = Vector2(0.25, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_ixvnm")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform_2"]
+shape = SubResource("RectangleShape2D_platform")
 
-[node name="ColorRect" type="ColorRect" parent="Player"]
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-offset_bottom = 40.0
-color = Color(0.0784314, 0.470588, 0.27451, 1)
+[node name="ColorRect" type="ColorRect" parent="Platform_2"]
+offset_left = -400.0
+offset_top = -25.0
+offset_right = 400.0
+offset_bottom = 25.0
+color = Color(0.27451, 0.156863, 0.0784314, 1)
