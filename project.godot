@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="My Godot Project"
+config/name="2D Platformer"
 run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.png"
