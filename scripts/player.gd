@@ -7,6 +7,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var spawn_position = Vector2(576, 400)
 
 func _ready():
+	add_to_group("player")
 	spawn_position = position
 
 func _physics_process(delta):
