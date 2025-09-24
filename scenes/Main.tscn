@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcs78jum1qs6n"]
+[gd_scene load_steps=11 format=3 uid="uid://bcs78jum1qs6n"]
 
 [ext_resource type="Script" uid="uid://kie4c3rvpivc" path="res://scripts/main.gd" id="1_yjmvr"]
 [ext_resource type="Script" uid="uid://dd2d4tf8ym1lx" path="res://scripts/player.gd" id="2_ixnqm"]
 [ext_resource type="Script" uid="uid://dt2fhrrn71lwy" path="res://scripts/platform.gd" id="3_0bbpv"]
 [ext_resource type="Script" uid="uid://bjjpjx3thkvn3" path="res://scripts/spinning_platform.gd" id="3_vcsgt"]
 [ext_resource type="Script" uid="uid://csugnorl7s8dw" path="res://scripts/coin.gd" id="4_yjcnp"]
+[ext_resource type="PackedScene" uid="uid://cjuyraims6aou" path="res://scenes/Clouds.tscn" id="6_c01mt"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lfnqj"]
 
@@ -25,11 +26,12 @@ position = Vector2(576, 400)
 position_smoothing_enabled = true
 
 [node name="Background" type="ColorRect" parent="."]
+z_index = -99
 material = SubResource("CanvasItemMaterial_lfnqj")
 offset_left = -519.0
 offset_top = -778.0
-offset_right = 2748.0
-offset_bottom = 1165.0
+offset_right = 3481.0
+offset_bottom = 1222.0
 color = Color(0.329412, 0.662745, 0.901961, 1)
 
 [node name="SpawnPoint" type="Node2D" parent="."]
@@ -101,6 +103,21 @@ offset_bottom = 25.0
 color = Color(0.27451, 0.141176, 0, 1)
 metadata/_edit_use_anchors_ = true
 
+[node name="Platform_3" type="StaticBody2D" parent="Platforms"]
+position = Vector2(2389, 562)
+scale = Vector2(0.25, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_3"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="ColorRect" type="ColorRect" parent="Platforms/Platform_3"]
+offset_left = -400.0
+offset_top = -25.0
+offset_right = 400.0
+offset_bottom = 25.0
+color = Color(0.27451, 0.141176, 0, 1)
+metadata/_edit_use_anchors_ = true
+
 [node name="MovingPlatform" type="AnimatableBody2D" parent="Platforms"]
 position = Vector2(1500, 500)
 script = ExtResource("3_0bbpv")
@@ -131,3 +148,6 @@ offset_top = -15.0
 offset_right = 15.0
 offset_bottom = 15.0
 color = Color(0.988235, 0.878431, 0.0392157, 1)
+
+[node name="Clouds" parent="." instance=ExtResource("6_c01mt")]
+position = Vector2(835, 159)
