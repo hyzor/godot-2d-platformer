@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjuyraims6aou"]
 
 [ext_resource type="Script" uid="uid://ccvpdphsuvq8a" path="res://scripts/cloud.gd" id="1_docmc"]
-[ext_resource type="Texture2D" uid="uid://brpife2i83gak" path="res://Untitled.png" id="2_1wuos"]
+[ext_resource type="Texture2D" uid="uid://brpife2i83gak" path="res://assets/textures/cloud.png" id="2_1wuos"]
 
 [node name="Clouds" type="Node2D"]
 
