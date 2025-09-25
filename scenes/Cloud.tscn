@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjuyraims6aou"]
+
+[ext_resource type="Script" uid="uid://ccvpdphsuvq8a" path="res://scripts/cloud.gd" id="1_docmc"]
+[ext_resource type="Texture2D" uid="uid://brpife2i83gak" path="res://assets/textures/cloud.png" id="2_1wuos"]
+
+[node name="Cloud" type="Node2D"]
+script = ExtResource("1_docmc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_1wuos")
+metadata/_edit_use_anchors_ = true
