@@ -1,12 +1,12 @@
 extends AnimatableBody2D
 
-@export var speed = 10.0
-@export var distance = 200.0
-@export var horizontal = true
-@export var rotation_speed = 2.0
+@export var speed: float = 5.0
+@export var distance: float = 200.0
+@export var horizontal: bool = true
+@export var rotation_speed: float = 1.25
 
 var start_position
-var direction = 1
+var direction: int = 1
 var target_position
 
 func _ready():

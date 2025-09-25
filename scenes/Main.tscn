@@ -22,7 +22,7 @@ z_index = -99
 material = SubResource("CanvasItemMaterial_lfnqj")
 offset_left = -963.0
 offset_top = -670.0
-offset_right = 3037.0
+offset_right = 5037.0
 offset_bottom = 1330.0
 color = Color(0.329412, 0.662745, 0.901961, 1)
 
@@ -58,11 +58,25 @@ position = Vector2(1037, 154)
 [node name="Platform_4" parent="Platforms" instance=ExtResource("4_c01mt")]
 position = Vector2(2208, 265)
 
+[node name="Platform_5" parent="Platforms" instance=ExtResource("4_c01mt")]
+position = Vector2(2554, 216)
+
 [node name="MovingPlatform" parent="Platforms" instance=ExtResource("5_nxtc6")]
-position = Vector2(1406, 174)
+position = Vector2(1368, 140)
+distance = 200.0
+
+[node name="MovingPlatform2" parent="Platforms" instance=ExtResource("5_nxtc6")]
+position = Vector2(2955, 379)
 
 [node name="Platform_3" parent="Platforms" instance=ExtResource("4_c01mt")]
 position = Vector2(303, 114)
 scale = Vector2(1, 1)
 
 [node name="Clouds" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="CoinLabel" type="Label" parent="UI"]
+offset_right = 200.0
+offset_bottom = 50.0
+text = "Coins: 0"
