@@ -34,4 +34,4 @@ func _physics_process(delta):
 		velocity.y = speed * direction
 	
 	# Use move_and_collide with velocity * delta for proper movement
-	position += velocity * delta
+	move_and_collide(velocity * delta)

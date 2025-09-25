@@ -17,11 +17,12 @@ func _ready():
 	for i in range(7):
 		_spawn_cloud(randf_range(0, get_viewport_rect().size.x * 1.5) + camera.position.x)
 
-func _process(delta):
+func _physics_process(delta):
 	# Make camera follow the player
 	if player and camera:
-		camera.position = player.position
+		camera.position = camera.position.lerp(player.position, 0.2)
 
+func _process(delta):
 	# Continuously spawn clouds
 	time_since_last_cloud_spawn += delta
 	if time_since_last_cloud_spawn >= cloud_spawn_interval:
@@ -33,7 +34,7 @@ func _spawn_cloud(spawn_x_position: float):
 	clouds_node.add_child(cloud)
 	
 	# Randomize cloud position and speed
-	cloud.position = Vector2(spawn_x_position, randf_range(-100, 300)) # Adjust Y range as needed
+	cloud.position = Vector2(spawn_x_position, randf_range(-200, 400)) # Adjust Y range as needed
 	cloud.horizontal_speed = randf_range(20, 80) # Randomize horizontal speed
 	cloud.move_speed = randf_range(5, 15) # Randomize vertical oscillation speed
 	cloud.scale = Vector2(randf_range(0.6, 1.4), randf_range(0.9, 1.1)) # Randomize cloud size

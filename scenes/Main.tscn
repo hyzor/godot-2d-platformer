@@ -1,21 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcs78jum1qs6n"]
+[gd_scene load_steps=8 format=3 uid="uid://bcs78jum1qs6n"]
 
 [ext_resource type="Script" uid="uid://kie4c3rvpivc" path="res://scripts/main.gd" id="1_yjmvr"]
 [ext_resource type="Script" uid="uid://dd2d4tf8ym1lx" path="res://scripts/player.gd" id="2_ixnqm"]
-[ext_resource type="Script" uid="uid://dt2fhrrn71lwy" path="res://scripts/platform.gd" id="3_0bbpv"]
-[ext_resource type="Script" uid="uid://bjjpjx3thkvn3" path="res://scripts/spinning_platform.gd" id="3_vcsgt"]
-[ext_resource type="Script" uid="uid://csugnorl7s8dw" path="res://scripts/coin.gd" id="4_yjcnp"]
+[ext_resource type="PackedScene" uid="uid://1uveeng1gve1" path="res://scenes/spinning_platform.tscn" id="3_vcsgt"]
+[ext_resource type="PackedScene" uid="uid://dcvfubjs8uy4e" path="res://scenes/platform.tscn" id="4_c01mt"]
+[ext_resource type="PackedScene" uid="uid://brejvo5jw7jh1" path="res://scenes/moving_platform.tscn" id="5_nxtc6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lfnqj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
 size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
-size = Vector2(800, 50)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_coin"]
-radius = 15.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_yjmvr")
@@ -33,7 +27,7 @@ offset_bottom = 1330.0
 color = Color(0.329412, 0.662745, 0.901961, 1)
 
 [node name="SpawnPoint" type="Node2D" parent="."]
-position = Vector2(33, 14)
+position = Vector2(2, 6)
 
 [node name="ColorRect" type="ColorRect" parent="SpawnPoint"]
 offset_right = 40.0
@@ -55,95 +49,20 @@ color = Color(0.0784314, 0.470588, 0.27451, 1)
 
 [node name="Platforms" type="Node2D" parent="."]
 
-[node name="Platform" type="StaticBody2D" parent="Platforms"]
-position = Vector2(307, 113)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform"]
-shape = SubResource("RectangleShape2D_platform")
-
-[node name="ColorRect" type="ColorRect" parent="Platforms/Platform"]
-offset_left = -400.0
-offset_top = -25.0
-offset_right = 400.0
-offset_bottom = 25.0
-color = Color(0.275411, 0.142383, 1.20327e-07, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Spinning_platform" type="AnimatableBody2D" parent="Platforms"]
+[node name="Spinning_platform" parent="Platforms" instance=ExtResource("3_vcsgt")]
 position = Vector2(1851, 226)
-scale = Vector2(0.25, 1)
-script = ExtResource("3_vcsgt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Spinning_platform"]
-shape = SubResource("RectangleShape2D_platform")
-
-[node name="ColorRect" type="ColorRect" parent="Platforms/Spinning_platform"]
-offset_left = -400.0
-offset_top = -25.0
-offset_right = 400.0
-offset_bottom = 25.0
-color = Color(0.275411, 0.142383, 1.20327e-07, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Platform_2" type="StaticBody2D" parent="Platforms"]
+[node name="Platform_2" parent="Platforms" instance=ExtResource("4_c01mt")]
 position = Vector2(1037, 154)
-scale = Vector2(0.25, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_2"]
-shape = SubResource("RectangleShape2D_platform")
+[node name="Platform_4" parent="Platforms" instance=ExtResource("4_c01mt")]
+position = Vector2(2208, 265)
 
-[node name="ColorRect" type="ColorRect" parent="Platforms/Platform_2"]
-offset_left = -400.0
-offset_top = -25.0
-offset_right = 400.0
-offset_bottom = 25.0
-color = Color(0.27451, 0.141176, 0, 1)
-metadata/_edit_use_anchors_ = true
+[node name="MovingPlatform" parent="Platforms" instance=ExtResource("5_nxtc6")]
+position = Vector2(1406, 174)
 
-[node name="Platform_3" type="StaticBody2D" parent="Platforms"]
-position = Vector2(2224, 232)
-scale = Vector2(0.25, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_3"]
-shape = SubResource("RectangleShape2D_platform")
-
-[node name="ColorRect" type="ColorRect" parent="Platforms/Platform_3"]
-offset_left = -400.0
-offset_top = -25.0
-offset_right = 400.0
-offset_bottom = 25.0
-color = Color(0.27451, 0.141176, 0, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="MovingPlatform" type="AnimatableBody2D" parent="Platforms"]
-position = Vector2(1450, 158)
-script = ExtResource("3_0bbpv")
-speed = 200.0
-distance = 300.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/MovingPlatform"]
-scale = Vector2(0.25, 1)
-shape = SubResource("RectangleShape2D_platform")
-
-[node name="ColorRect" type="ColorRect" parent="Platforms/MovingPlatform"]
-offset_left = -100.0
-offset_top = -25.0
-offset_right = 100.0
-offset_bottom = 25.0
-color = Color(0.8, 0.4, 0, 1)
-
-[node name="Coin" type="Area2D" parent="Platforms/MovingPlatform"]
-position = Vector2(0, -50)
-script = ExtResource("4_yjcnp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/MovingPlatform/Coin"]
-shape = SubResource("CircleShape2D_coin")
-
-[node name="ColorRect" type="ColorRect" parent="Platforms/MovingPlatform/Coin"]
-offset_left = -15.0
-offset_top = -15.0
-offset_right = 15.0
-offset_bottom = 15.0
-color = Color(0.988235, 0.878431, 0.0392157, 1)
+[node name="Platform_3" parent="Platforms" instance=ExtResource("4_c01mt")]
+position = Vector2(303, 114)
+scale = Vector2(1, 1)
 
 [node name="Clouds" type="Node2D" parent="."]

@@ -1,6 +1,6 @@
 extends AnimatableBody2D
 
-@export var speed = 100.0
+@export var speed = 10.0
 @export var distance = 200.0
 @export var horizontal = true
 @export var rotation_speed = 2.0
@@ -35,7 +35,8 @@ func _physics_process(delta):
 		velocity.y = speed * direction
 	
 	# Use move_and_collide with velocity * delta for proper movement
-	position += velocity * delta
+	move_and_collide(velocity * delta)
 	
 	# Add spinning rotation
 	rotation += rotation_speed * delta
+	$CollisionShape2D.rotation = 0

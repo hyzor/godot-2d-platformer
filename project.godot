@@ -14,3 +14,7 @@ config/name="2D Platformer"
 run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.png"
+
+[physics]
+
+common/physics_fps=120
