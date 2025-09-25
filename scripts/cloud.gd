@@ -8,14 +8,14 @@ var direction: int = 1 # 1 for down, -1 for up
 @export var horizontal_speed: float = 50.0 # Renamed for clarity
 
 func _ready():
-	min_y = position.y - 50 # Example offset
-	max_y = position.y + 10  # Example offset
+	min_y = position.y - 150 # Increased range for more oscillation
+	max_y = position.y + 150  # Increased range for more oscillation
 
 func _process(delta):
 	# Horizontal movement
 	position.x -= horizontal_speed * delta
-	if position.x < -get_viewport_rect().size.x / 2: # Adjust this value based on cloud size
-		position.x = get_viewport_rect().size.x * 1.5 # Respawn far to the right
+	if position.x < -get_viewport_rect().size.x / 2: # Off screen, remove instead of respawn
+		queue_free()
 
 	# Vertical movement
 	position.y += direction * move_speed * delta
