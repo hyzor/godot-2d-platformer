@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcs78jum1qs6n"]
+[gd_scene load_steps=10 format=3 uid="uid://bcs78jum1qs6n"]
 
 [ext_resource type="Script" uid="uid://kie4c3rvpivc" path="res://scripts/main.gd" id="1_yjmvr"]
 [ext_resource type="Script" uid="uid://dd2d4tf8ym1lx" path="res://scripts/player.gd" id="2_ixnqm"]
 [ext_resource type="Script" uid="uid://dt2fhrrn71lwy" path="res://scripts/platform.gd" id="3_0bbpv"]
 [ext_resource type="Script" uid="uid://bjjpjx3thkvn3" path="res://scripts/spinning_platform.gd" id="3_vcsgt"]
 [ext_resource type="Script" uid="uid://csugnorl7s8dw" path="res://scripts/coin.gd" id="4_yjcnp"]
-[ext_resource type="PackedScene" uid="uid://cjuyraims6aou" path="res://scenes/Clouds.tscn" id="6_c01mt"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lfnqj"]
 
@@ -22,20 +21,19 @@ radius = 15.0
 script = ExtResource("1_yjmvr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 400)
 position_smoothing_enabled = true
 
 [node name="Background" type="ColorRect" parent="."]
 z_index = -99
 material = SubResource("CanvasItemMaterial_lfnqj")
-offset_left = -519.0
-offset_top = -778.0
-offset_right = 3481.0
-offset_bottom = 1222.0
+offset_left = -963.0
+offset_top = -670.0
+offset_right = 3037.0
+offset_bottom = 1330.0
 color = Color(0.329412, 0.662745, 0.901961, 1)
 
 [node name="SpawnPoint" type="Node2D" parent="."]
-position = Vector2(327.296, 419.339)
+position = Vector2(33, 14)
 
 [node name="ColorRect" type="ColorRect" parent="SpawnPoint"]
 offset_right = 40.0
@@ -43,7 +41,6 @@ offset_bottom = 40.0
 color = Color(0.825865, 0.128478, 0.211496, 1)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(1214.57, 312.459)
 script = ExtResource("2_ixnqm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -59,7 +56,7 @@ color = Color(0.0784314, 0.470588, 0.27451, 1)
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="Platform" type="StaticBody2D" parent="Platforms"]
-position = Vector2(576, 500)
+position = Vector2(307, 113)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform"]
 shape = SubResource("RectangleShape2D_platform")
@@ -73,7 +70,7 @@ color = Color(0.275411, 0.142383, 1.20327e-07, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Spinning_platform" type="AnimatableBody2D" parent="Platforms"]
-position = Vector2(2000, 500)
+position = Vector2(1851, 226)
 scale = Vector2(0.25, 1)
 script = ExtResource("3_vcsgt")
 
@@ -89,7 +86,7 @@ color = Color(0.275411, 0.142383, 1.20327e-07, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Platform_2" type="StaticBody2D" parent="Platforms"]
-position = Vector2(1200, 425)
+position = Vector2(1037, 154)
 scale = Vector2(0.25, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_2"]
@@ -104,7 +101,7 @@ color = Color(0.27451, 0.141176, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Platform_3" type="StaticBody2D" parent="Platforms"]
-position = Vector2(2389, 562)
+position = Vector2(2224, 232)
 scale = Vector2(0.25, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_3"]
@@ -119,7 +116,7 @@ color = Color(0.27451, 0.141176, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="MovingPlatform" type="AnimatableBody2D" parent="Platforms"]
-position = Vector2(1500, 500)
+position = Vector2(1450, 158)
 script = ExtResource("3_0bbpv")
 speed = 200.0
 distance = 300.0
@@ -149,5 +146,4 @@ offset_right = 15.0
 offset_bottom = 15.0
 color = Color(0.988235, 0.878431, 0.0392157, 1)
 
-[node name="Clouds" parent="." instance=ExtResource("6_c01mt")]
-position = Vector2(835, 159)
+[node name="Clouds" type="Node2D" parent="."]

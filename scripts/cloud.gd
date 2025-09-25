@@ -1,8 +1,25 @@
 extends Node2D
 
-@export var speed: float = 50.0
+@export var min_y: float = 0.0
+@export var max_y: float = 200.0
+@export var move_speed: float = 1.0
+
+var direction: int = 1 # 1 for down, -1 for up
+@export var horizontal_speed: float = 50.0 # Renamed for clarity
+
+func _ready():
+	min_y = position.y - 50 # Example offset
+	max_y = position.y + 10  # Example offset
 
 func _process(delta):
-	position.x -= speed * delta
+	# Horizontal movement
+	position.x -= horizontal_speed * delta
 	if position.x < -get_viewport_rect().size.x / 2: # Adjust this value based on cloud size
 		position.x = get_viewport_rect().size.x * 1.5 # Respawn far to the right
+
+	# Vertical movement
+	position.y += direction * move_speed * delta
+	if position.y >= max_y:
+		direction = -1
+	elif position.y <= min_y:
+		direction = 1
