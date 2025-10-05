@@ -33,5 +33,5 @@ func _physics_process(delta):
 		
 		velocity.y = speed * direction
 	
-	# Use move_and_collide with velocity * delta for proper movement
-	move_and_collide(velocity * delta)
+	# Use direct position updates for AnimatableBody2D without sync to physics
+	position += velocity * delta

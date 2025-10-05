@@ -25,7 +25,9 @@ func _ready():
 func _physics_process(delta):
 	# Make camera follow the player
 	if player and camera:
-		camera.position = camera.position.lerp(player.position, 0.2)
+		# Use delta for frame-rate independent movement
+		var lerp_speed = 4.0  # units per second
+		camera.position = camera.position.lerp(player.position, 1.0 - exp(-lerp_speed * delta))
 
 func _process(delta):
 	# Continuously spawn clouds

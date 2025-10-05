@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcs78jum1qs6n"]
+[gd_scene load_steps=9 format=3 uid="uid://bcs78jum1qs6n"]
 
 [ext_resource type="Script" uid="uid://kie4c3rvpivc" path="res://scripts/main.gd" id="1_yjmvr"]
 [ext_resource type="Script" uid="uid://dd2d4tf8ym1lx" path="res://scripts/player.gd" id="2_ixnqm"]
 [ext_resource type="PackedScene" uid="uid://1uveeng1gve1" path="res://scenes/spinning_platform.tscn" id="3_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://dcvfubjs8uy4e" path="res://scenes/platform.tscn" id="4_c01mt"]
 [ext_resource type="PackedScene" uid="uid://brejvo5jw7jh1" path="res://scenes/moving_platform.tscn" id="5_nxtc6"]
+[ext_resource type="PackedScene" uid="uid://ju24emxsiasv" path="res://scenes/coin.tscn" id="6_c01mt"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lfnqj"]
 
@@ -35,6 +36,7 @@ offset_bottom = 40.0
 color = Color(0.825865, 0.128478, 0.211496, 1)
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(291.7923, 25.10321)
 script = ExtResource("2_ixnqm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -65,8 +67,14 @@ position = Vector2(2554, 216)
 position = Vector2(1368, 140)
 distance = 200.0
 
+[node name="Coin" parent="Platforms/MovingPlatform" instance=ExtResource("6_c01mt")]
+position = Vector2(-1, -54)
+
 [node name="MovingPlatform2" parent="Platforms" instance=ExtResource("5_nxtc6")]
 position = Vector2(2955, 379)
+
+[node name="Coin" parent="Platforms/MovingPlatform2" instance=ExtResource("6_c01mt")]
+position = Vector2(-1, -49)
 
 [node name="Platform_3" parent="Platforms" instance=ExtResource("4_c01mt")]
 position = Vector2(303, 114)
