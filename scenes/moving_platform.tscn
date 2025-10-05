@@ -9,6 +9,7 @@ size = Vector2(800, 50)
 script = ExtResource("1_1tdcd")
 speed = 200.0
 distance = 300.0
+horizontal = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.25, 1)

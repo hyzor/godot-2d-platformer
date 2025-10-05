@@ -66,12 +66,14 @@ position = Vector2(2554, 216)
 [node name="MovingPlatform" parent="Platforms" instance=ExtResource("5_nxtc6")]
 position = Vector2(1368, 140)
 distance = 200.0
+horizontal = true
 
 [node name="Coin" parent="Platforms/MovingPlatform" instance=ExtResource("6_c01mt")]
 position = Vector2(-1, -54)
 
 [node name="MovingPlatform2" parent="Platforms" instance=ExtResource("5_nxtc6")]
 position = Vector2(2955, 379)
+horizontal = true
 
 [node name="Coin" parent="Platforms/MovingPlatform2" instance=ExtResource("6_c01mt")]
 position = Vector2(-1, -49)
@@ -79,6 +81,12 @@ position = Vector2(-1, -49)
 [node name="Platform_3" parent="Platforms" instance=ExtResource("4_c01mt")]
 position = Vector2(303, 114)
 scale = Vector2(1, 1)
+
+[node name="MovingPlatform3" parent="Platforms" instance=ExtResource("5_nxtc6")]
+position = Vector2(3458, 495)
+
+[node name="Coin" parent="Platforms/MovingPlatform3" instance=ExtResource("6_c01mt")]
+position = Vector2(-4, -51)
 
 [node name="Clouds" type="Node2D" parent="."]
 

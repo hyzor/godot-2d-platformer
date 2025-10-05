@@ -28,7 +28,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	# Check if player fell off screen
-	if position.y > 700:
+	if position.y > 1000:
 		respawn()
 
 func respawn():

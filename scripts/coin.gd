@@ -2,7 +2,7 @@ extends Area2D
 
 signal collected
 
-var time = 0.0
+var time: float = 0.0
 
 func _ready():
 	add_to_group("coins")

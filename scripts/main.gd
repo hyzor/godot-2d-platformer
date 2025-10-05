@@ -26,7 +26,7 @@ func _physics_process(delta):
 	# Make camera follow the player
 	if player and camera:
 		# Use delta for frame-rate independent movement
-		var lerp_speed = 4.0  # units per second
+		var lerp_speed: float = 5.0  # units per second
 		camera.position = camera.position.lerp(player.position, 1.0 - exp(-lerp_speed * delta))
 
 func _process(delta):
@@ -36,7 +36,7 @@ func _process(delta):
 		_spawn_cloud(camera.position.x + get_viewport_rect().size.x / 2 + 100) # Spawn to the right of the camera
 		time_since_last_cloud_spawn = 0.0
 
-func _spawn_cloud(spawn_x_position: float):
+func _spawn_cloud(spawn_x_position: float) -> void:
 	if clouds_node.get_child_count() >= max_clouds:
 		return
 	var cloud = CloudScene.instantiate()
